@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101525" />
+  <meta name="description" content="A free, private material farming tracker for Anime Zero." />
+  <title>Anime Zero • Material Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Anime Zero Tracker home"><span class="mark">✦</span><span>ANIME<span class="accent">ZERO</span><small>MATERIAL TRACKER</small></span></a>
+      <span class="saved"><span class="status-dot"></span> Saved on this device</span>
+    </header>
+    <main>
+      <section class="hero">
+        <div><p class="eyebrow">YOUR GRIND, ORGANIZED</p><h1>Farm smarter.<br><span class="gradient">Evolve faster.</span></h1><p class="subtitle">Track what you own, add drops in seconds, and see exactly what you're missing. Your progress is saved automatically in this browser.</p></div>
+        <div class="hero-symbol" aria-hidden="true">✧</div>
+      </section>
+      <section class="metrics" aria-label="Farming overview">
+        <div class="metric"><span>Tracked materials</span><strong id="totalItems">0</strong></div>
+        <div class="metric"><span>Materials completed</span><strong id="completedItems">0</strong></div>
+        <div class="metric"><span>Overall progress</span><strong id="overallProgress">0%</strong></div>
+      </section>
+      <section class="panel">
+        <div class="section-header"><div><h2>My materials</h2><p>Each clan member keeps their own progress on their device.</p></div><button class="button primary" id="addMaterialBtn">+ Add material</button></div>
+        <div class="toolbar"><label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" placeholder="Search materials..." aria-label="Search materials" /></label><select id="filterSelect" aria-label="Filter materials"><option value="all">All materials</option><option value="inprogress">In progress</option><option value="done">Completed</option></select></div>
+        <div class="table-wrapper"><table><thead><tr><th>Material</th><th>Current</th><th>Required</th><th>Add drops</th><th>Remaining</th><th>Progress</th><th><span class="sr-only">Actions</span></th></tr></thead><tbody id="materialRows"></tbody></table><p class="empty" id="emptyState" hidden>No materials match your search.</p></div>
+      </section>
+      <section class="footer-panels">
+        <article class="panel help"><h2>How to use</h2><p>Click <b>+ Add material</b> to create your own item. Use <b>Edit</b> to change the name, current amount, or target. Whenever you get more drops, enter the amount under <b>Add drops</b> and press <b>Add</b>. Your progress and remaining amount update automatically.</p><p class="hint">Tip: Click − to correct an accidental addition. You can back up your progress with Export.</p></article>
+        <article class="panel storage"><h2>Back up your grind</h2><p>Progress stays in this browser only. Export a backup before switching devices or clearing browser data.</p><div class="actions"><button class="button subtle" id="exportBtn">↓ Export backup</button><button class="button subtle" id="importBtn">↑ Import backup</button><button class="button danger" id="resetBtn">Reset</button><input id="importFile" type="file" accept=".json,application/json" hidden /></div></article>
+      </section>
+    </main>
+    <footer>Unofficial fan-made tracker for Anime Zero · No account required · Not affiliated with Roblox or the game developers</footer>
+  </div>
+  <dialog id="editorDialog"><form id="editorForm" method="dialog"><h2 id="dialogTitle">Add material</h2><label>Material name<input name="name" id="materialName" maxlength="90" required placeholder="e.g. Shadow Essence" /></label><div class="dialog-grid"><label>Current amount<input name="current" id="materialCurrent" type="number" min="0" max="999999999" step="1" required value="0" /></label><label>Required amount<input name="required" id="materialRequired" type="number" min="1" max="999999999" step="1" required value="1" /></label></div><p id="formError" class="error" role="alert" hidden></p><div class="dialog-actions"><button type="button" id="cancelEditor" class="button subtle">Cancel</button><button type="submit" class="button primary">Save material</button></div></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>
